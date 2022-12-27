@@ -25,6 +25,11 @@ fun createTasksForGithubActions() {
         dependsOn(gradle.includedBuild("kotlin-sdk").task(":kotlin:koverReport"))
         dependsOn(gradle.includedBuild("android-sdk").task(":android:koverReport"))
     }
+
+    tasks.register("publish") {
+        dependsOn(gradle.includedBuild("kotlin-sdk").task(":kotlin:publish"))
+        dependsOn(gradle.includedBuild("android-sdk").task(":android:publish"))
+    }
 }
 
 fun createTasksForSamples() {
