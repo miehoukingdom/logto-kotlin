@@ -22,7 +22,7 @@ jobs:
         uses: gradle/gradle-build-action@v2
       - name: Publish packages
         run: |
-          ./gradlew :kotlin-sdk:android:publish
+          ./gradlew :kotlin-sdk:publish
           ./gradlew :android-sdk:android:publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
