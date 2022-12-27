@@ -24,6 +24,7 @@ class LogtoWebViewAuthActivity : AppCompatActivity() {
         }
 
         webView = WebView(this).apply {
+            isFocusableInTouchMode = true
             settings.javaScriptEnabled = true
             settings.cacheMode = WebSettings.LOAD_NO_CACHE
             val socialHandler = LogtoWebViewSocialHandler(
