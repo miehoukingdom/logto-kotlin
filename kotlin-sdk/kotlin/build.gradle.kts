@@ -92,7 +92,3 @@ publishing {
         }
     }
 }
-
-signing {
-    sign(publishing.publications["kotlin"])
-}
