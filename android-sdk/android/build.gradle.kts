@@ -120,11 +120,12 @@ publishing {
     }
 
     repositories {
-        maven(url = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/") {
-            name = "sonatype"
+        maven {
+            name = "GitHubPackages"
+            url = "https://maven.pkg.github.com/octocat/hello-world"
             credentials {
-                username = (project.properties["ossrhUsername"] as String?)?: ""
-                password = (project.properties["ossrhPassword"] as String?)?: ""
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
             }
         }
     }
