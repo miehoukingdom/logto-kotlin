@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.webkit.WebSettings
 import android.webkit.WebView
 import androidx.appcompat.app.AppCompatActivity
@@ -26,7 +27,6 @@ class LogtoWebViewAuthActivity : AppCompatActivity() {
         webView = WebView(this).apply {
             isFocusable = true
             isFocusableInTouchMode = true
-            requestFocus()
             settings.javaScriptEnabled = true
             settings.cacheMode = WebSettings.LOAD_NO_CACHE
             val socialHandler = LogtoWebViewSocialHandler(
@@ -44,6 +44,7 @@ class LogtoWebViewAuthActivity : AppCompatActivity() {
         }
         webView.loadUrl(uri)
         setContentView(webView)
+        webView.requestFocus(View.FOCUS_DOWN)
     }
 
     override fun onDestroy() {
