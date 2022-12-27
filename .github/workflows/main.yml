@@ -18,8 +18,6 @@ jobs:
           java-version: 11.0.12
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@v1.0.5
-      - name: Init gradle
-        uses: gradle/gradle-build-action@v2
       - name: Publish packages
         uses: gradle/gradle-build-action@v2
         with:
