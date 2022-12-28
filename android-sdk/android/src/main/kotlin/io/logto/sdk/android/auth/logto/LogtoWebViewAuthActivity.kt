@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.MotionEvent
 import android.view.View
 import android.webkit.WebSettings
 import android.webkit.WebView
@@ -27,6 +28,16 @@ class LogtoWebViewAuthActivity : AppCompatActivity() {
         webView = WebView(this).apply {
             isFocusable = true
             isFocusableInTouchMode = true
+            setLayerType(View.LAYER_TYPE_SOFTWARE, null)
+            setOnTouchListener { v, event ->
+                when (event.action) {
+                    MotionEvent.ACTION_DOWN, MotionEvent.ACTION_UP ->
+                        if (!v.hasFocus()) {
+                            v.requestFocus()
+                        }
+                }
+                return@setOnTouchListener false
+            }
             settings.javaScriptEnabled = true
             settings.cacheMode = WebSettings.LOAD_NO_CACHE
             val socialHandler = LogtoWebViewSocialHandler(
